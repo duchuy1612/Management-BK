@@ -11,7 +11,7 @@ const TeacherRegister = ({ history }) => {
   const [uploading, setUploading] = useState(false)
   const [valid, setValid] = useState(false)
   const [time, setTime] = useState(false)
-  const [name, setName] = useState('')
+  const [teacher_name, setteacherName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
   const [previous_school, setPrevious_school] = useState('')
@@ -61,7 +61,7 @@ const TeacherRegister = ({ history }) => {
     setValid(true)
     dispatch(
       teacherregister(
-        name.trim(),
+        teacher_name.trim(),
         qualification,
 
         address,
@@ -75,7 +75,7 @@ const TeacherRegister = ({ history }) => {
         subjectToTeach
       )
     )
-    setName('')
+    setteacherName('')
     setAddress('')
     // setImage('')
     setTimeout(() => {
@@ -118,8 +118,8 @@ const TeacherRegister = ({ history }) => {
                 <label htmlFor='name'>Full Name</label>
                 <input
                   type='text'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={teacher_name}
+                  onChange={(e) => setteacherName(e.target.value)}
                   required
                 />
               </div>

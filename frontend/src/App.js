@@ -11,11 +11,6 @@ import StudentDeepDetails from './screens/StudentDeepDetails'
 import StudentAttendance from './screens/StudentAttendance'
 import AllStudents from './screens/AllStudents'
 import StudentDeepAttendance from './screens/StudentDeepAttendance'
-import StudentAdmitCard from './screens/StudentAdmitCard'
-import AllStudentsAdmitCard from './screens/AllStudentsAdmitCard'
-import StudentClassAdmitCard from './screens/StudentClassAdmitCard'
-import StudentClassAdmitCardDeep from './screens/StudentClassAdmitCardDeep'
-import ParticularStudentAdmitCard from './screens/ParticularStudentAdmitCard'
 import TeacherSalary from './screens/TeacherSalary'
 import StaffSalary from './screens/StaffSalary'
 import TeacherRegister from './screens/TeacherRegister'
@@ -71,27 +66,6 @@ const App = () => {
             exact
           />
           <PrivateRoute path='/students' component={AllStudents} exact />
-          <PrivateRoute path='/admit_card' component={StudentAdmitCard} exact />
-          <PrivateRoute
-            path='/admit_card/allstudents'
-            component={AllStudentsAdmitCard}
-            exact
-          />
-          <PrivateRoute
-            path='/admit_card/classes'
-            component={StudentClassAdmitCard}
-            exact
-          />
-          <PrivateRoute
-            path='/admit_card/classes/:id'
-            component={StudentClassAdmitCardDeep}
-            exact
-          />
-          <PrivateRoute
-            path='/admit_card/student'
-            component={ParticularStudentAdmitCard}
-            exact
-          />
           <PrivateRoute
             path='/teacher_salary'
             component={TeacherSalary}
@@ -102,9 +76,9 @@ const App = () => {
             component={TeacherRegister}
             exact
           />
-          <PrivateRoute path='/teacher_details' component={AllTeachers} exact />
+          <PrivateRoute path='/teachers' component={AllTeachers} exact />
           <PrivateRoute
-            path='/non-teaching_staff_details'
+            path='/staffs'
             component={AllStaffs}
             exact
           />
