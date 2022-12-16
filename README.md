@@ -15,9 +15,8 @@ npm install
 ```
 
 ### `Running`
-
-```bash
 Go to the root folder
+```bash
 npm run dev
 ```
 
