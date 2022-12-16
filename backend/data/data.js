@@ -15,10 +15,12 @@ const items = [
   {
     title: 'Teachers',
     number: 200,
+    takeme: '/teacher_details',
     image: '/images/teachers.jpg',
   },
   {
     title: 'Working Staffs',
+    takeme: '/non-teaching_staff_details',
     number: 30,
     image: '/images/Non-teaching.jpeg',
   },
