@@ -12,6 +12,7 @@ Go to the frontend folder by command cd frontend and then install frontend depen
 
 ```bash
 npm install
+```
 
 ### `Running`
 

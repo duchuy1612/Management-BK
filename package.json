@@ -14,14 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/upendradhamala/School-Management-System.git"
+    "url": "git+https://github.com/duchuy1612/Management-BK.git"
   },
-  "author": "Upendra Dhamala",
+  "author": "Huy Nguyen",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/upendradhamala/School-Management-System/issues"
-  },
-  "homepage": "https://github.com/upendradhamala/School-Management-System#readme",
+  "homepage": "https://github.com/duchuy1612/Management-BK#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dateformat": "^5.0.3",
