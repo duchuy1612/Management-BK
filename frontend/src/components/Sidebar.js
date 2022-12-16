@@ -56,12 +56,6 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
             Student Attendance
           </Link>
         </div>
-        <div className='sidebar__link'>
-          <i className='far fa-sticky-note'></i>
-          <Link className='linked' to='/admit_card'>
-            Admit Card
-          </Link>
-        </div>
         <h2>Teachers Section</h2>
         <div className='sidebar__link'>
           <i className='fa fa-male'></i>
