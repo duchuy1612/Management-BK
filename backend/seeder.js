@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 import users from './data/users.js'
 import items from './data/data.js'
 import students from './data/studentData.js'
+import teachers from './data/teacherData.js'	
+import Teacher from './models/teacherModel.js'
 import Student from './models/studentModel.js'
 import Dashboard from './models/dashboardModel.js'
 import Admin from './models/adminModel.js'
@@ -16,6 +18,7 @@ const importData = async () => {
   try {
     await Admin.deleteMany()
     await Student.deleteMany()
+    await Teacher.deleteMany()
     await Dashboard.deleteMany()
     const createdUsers = await Admin.insertMany(users)
     console.log('inserted users')
@@ -25,9 +28,13 @@ const importData = async () => {
       return { ...student, user: adminUser }
     })
 
+    const sampleTeachers = teachers.map((teacher) => {
+      return { ...teacher, user: adminUser }
+    })
+
     await Dashboard.insertMany(items)
     await Student.insertMany(sampleStudents)
-
+    await Teacher.insertMany(sampleTeachers)
 
     console.log('Data imported.')
     process.exit()

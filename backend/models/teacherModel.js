@@ -45,7 +45,7 @@ const teacherSchema = mongoose.Schema(
     },
     estimated_salary: {
       type: Number,
-      required: true,
+      required: false,
     },
     image: {
       type: String,
