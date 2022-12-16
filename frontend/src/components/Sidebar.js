@@ -71,7 +71,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
         <div className='sidebar__link'>
           <i className='fas fa-info'></i>
-          <Link className='linked' to='/teacher_details'>
+          <Link className='linked' to='/teachers'>
             Teacher Details
           </Link>
         </div>
@@ -96,7 +96,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
         <div className='sidebar__link'>
           <i className='fas fa-info'></i>
-          <Link className='linked' to='/non-teaching_staff_details'>
+          <Link className='linked' to='/staffs'>
             Details
           </Link>
         </div>

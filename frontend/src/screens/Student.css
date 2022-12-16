@@ -306,7 +306,7 @@ th, td {
    /* student fees section
     */
     .search-form{
-        max-width: 1000px;
+        max-width: 1200px;
         margin: auto;
         margin-top: 15px;
         /* margin:10px; */
@@ -320,8 +320,8 @@ th, td {
         padding:5px;
         color:white;
         margin-bottom: 10px;
-        font-size: 20px;
-        background: rgb(136, 84, 84);
+        font-size: 30px;
+        background: rgb(0, 0, 0);
 
     }
     .search-form form{
@@ -329,7 +329,7 @@ th, td {
         display:flex;
         justify-content: center;
         /* flex-direction: row; */
-        /* max-width: 500px; */
+        /* max-width: 500px;
         /* grid-template-columns: 1fr 0.5fr 0.3fr 0.4fr; */ 
     }
     .search-form form input{
