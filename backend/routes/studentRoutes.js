@@ -230,10 +230,6 @@ router.post(
       month_name,
       year,
       monthly_fees,
-      hostel_fees,
-      laboratory_fees,
-      computer_fees,
-      exam_fees,
       miscellaneous,
     } = req.body
     console.log(req.params.id)
@@ -250,16 +246,12 @@ router.post(
         month_name,
         year,
         monthly_fees,
-        hostel_fees,
-        laboratory_fees,
-        computer_fees,
-        exam_fees,
         miscellaneous,
       })
       if (fees_submitted) {
         const total_Fees = await StudentFees.find()
           .select(
-            'monthly_fees hostel_fees laboratory_fees computer_fees exam_fees miscellaneous '
+            'monthly_fees miscellaneous'
           )
           .select('-_id')
         var total_Fees1 = 0
@@ -268,10 +260,6 @@ router.post(
             (total_Fees1 =
               total_Fees1 +
               fee.monthly_fees +
-              fee.hostel_fees +
-              fee.laboratory_fees +
-              fee.computer_fees +
-              fee.exam_fees +
               fee.miscellaneous)
           // return total_Fees
         )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
-import NepaliDate from 'nepali-date-converter'
+import dateFormat, { masks } from "dateformat";
 import { PayFees } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import {
@@ -20,12 +20,8 @@ const StudentFees = () => {
   const [rollno, setRollno] = useState('')
 
   const [monthname, setMonthname] = useState('')
-
+  const now = new Date();
   const [monthlyfees, setMonthlyfees] = useState('')
-  const [hostel_fees, setHostel_fees] = useState('')
-  const [laboratory_fees, setLaboratory_fees] = useState('')
-  const [computer_fees, setComputer_fees] = useState('')
-  const [exam_fees, setExam_fees] = useState('')
   const [miscellaneous, setMiscellaneous] = useState('')
   const studentFees = useSelector((state) => state.studentFees)
   // const studentFees = useSelector((state) => state.studentFees)
@@ -51,12 +47,8 @@ const StudentFees = () => {
         student.classname,
         student.roll_no,
         monthname,
-        new NepaliDate().format('YYYY'),
+        dateFormat(now, "yyyy"),
         monthlyfees,
-        hostel_fees,
-        laboratory_fees,
-        computer_fees,
-        exam_fees,
         miscellaneous
       )
     )
@@ -99,19 +91,19 @@ const StudentFees = () => {
             required
           >
             <option value=''>Select Class</option>
-            <option value='Nursery'>Nursery</option>
-            <option value='LKG'>LKG</option>
-            <option value='UKG'>UKG</option>
-            <option value='One'>One</option>
-            <option value='Two'>Two</option>
-            <option value='Three'>Three</option>
-            <option value='Four'>Four</option>
-            <option value='Five'>Five</option>
-            <option value='Six'>Six</option>
-            <option value='Seven'>Seven</option>
-            <option value='Eight'>Eight</option>
-            <option value='Nine'>Nine</option>
-            <option value='Ten'>Ten</option>
+            <option value='Math'>Math</option>
+            <option value='Literature'>Literature</option>
+            <option value='Chemistry'>Chemistry</option>
+            <option value='English'>English</option>
+            <option value='Physics'>Physics</option>
+            <option value='Japanese'>Japanese</option>
+            <option value='History'>History</option>
+            <option value='Geography'>Geography</option>
+            <option value='Information Technology'>Information Technology</option>
+            <option value='Biology'>Biology</option>
+            <option value='Social Skills'>Social Skills</option>
+            <option value='Chinese'>Chinese</option>
+            <option value='Anime'>Anime</option>
           </select>
           <input
             type='number'
@@ -154,20 +146,19 @@ const StudentFees = () => {
                   <label for='name'>Class</label>
                   <select id='class' value={student.classname}>
                     <option value=''>Select</option>
-
-                    <option value='Nursery'>Nursery</option>
-                    <option value='LKG'>LKG</option>
-                    <option value='UKG'>UKG</option>
-                    <option value='One'>One</option>
-                    <option value='Two'>Two</option>
-                    <option value='Three'>Three</option>
-                    <option value='Four'>Four</option>
-                    <option value='Five'>Five</option>
-                    <option value='Six'>Six</option>
-                    <option value='Seven'>Seven</option>
-                    <option value='Eight'>Eight</option>
-                    <option value='Nine'>Nine</option>
-                    <option value='Ten'>Ten</option>
+                    <option value='Math'>Math</option>
+                    <option value='Literature'>Literature</option>
+                    <option value='Chemistry'>Chemistry</option>
+                    <option value='English'>English</option>
+                    <option value='Physics'>Physics</option>
+                    <option value='Japanese'>Japanese</option>
+                    <option value='History'>History</option>
+                    <option value='Geography'>Geography</option>
+                    <option value='Information Technology'>Information Technology</option>
+                    <option value='Biology'>Biology</option>
+                    <option value='Social Skills'>Social Skills</option>
+                    <option value='Chinese'>Chinese</option>
+                    <option value='Anime'>Anime</option>
                   </select>
                 </div>{' '}
                 <div className='form-control'>
@@ -178,7 +169,7 @@ const StudentFees = () => {
                   <label for='year'>Year</label>
                   <input
                     type='string'
-                    value={new NepaliDate().format('YYYY')}
+                    value={dateFormat(now, "yyyy")}
                   />
                 </div>{' '}
                 <div className='form-control'>
@@ -191,18 +182,18 @@ const StudentFees = () => {
                   >
                     <option value=''>Select Month</option>
 
-                    <option value='Baisakh'>Baisakh</option>
-                    <option value='Jestha'>Jestha</option>
-                    <option value='Ashadh'>Ashadh</option>
-                    <option value='Shrawan'>Shrawan</option>
-                    <option value='Bhadra'>Bhadra</option>
-                    <option value='Ashoj'>Ashoj</option>
-                    <option value='Kartik'>Kartik</option>
-                    <option value='Mangsir'>Mangsir</option>
-                    <option value='Poush'>Poush</option>
-                    <option value='Magh'>Magh</option>
-                    <option value='Falgun'>Falgun</option>
-                    <option value='Chaitra'>Chaitra</option>
+                    <option value='January'>January</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option value='December'>December</option>
                     {/* <option value='Ten'>Ten</option> */}
                   </select>
                 </div>{' '}
@@ -213,38 +204,6 @@ const StudentFees = () => {
                     value={monthlyfees}
                     onChange={(e) => setMonthlyfees(e.target.value)}
                     required
-                  />
-                </div>{' '}
-                <div className='form-control'>
-                  <label for='name'>Hostel Fees</label>
-                  <input
-                    type='number'
-                    value={hostel_fees}
-                    onChange={(e) => setHostel_fees(e.target.value)}
-                  />
-                </div>{' '}
-                <div className='form-control'>
-                  <label for='name'>Laboratory Fees</label>
-                  <input
-                    type='number'
-                    value={laboratory_fees}
-                    onChange={(e) => setLaboratory_fees(e.target.value)}
-                  />
-                </div>{' '}
-                <div className='form-control'>
-                  <label for='name'>Computer Fees</label>
-                  <input
-                    type='number'
-                    value={computer_fees}
-                    onChange={(e) => setComputer_fees(e.target.value)}
-                  />
-                </div>
-                <div className='form-control'>
-                  <label for='name'>Exam Fees</label>
-                  <input
-                    type='number'
-                    value={exam_fees}
-                    onChange={(e) => setExam_fees(e.target.value)}
                   />
                 </div>{' '}
                 <div className='form-control'>
