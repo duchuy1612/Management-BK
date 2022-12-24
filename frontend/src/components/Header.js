@@ -10,7 +10,7 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
       <div className='nav_icon' onClick={() => openSidebar()}>
         <i className='fa fa-bars' aria-hidden='true'></i>
       </div>
-      <p>Hololive Center Management</p>
+      <p>Teaching Center Management</p>
       <div className='navbar__right'>
         <span className='loggedinas'>
           <img src={userCred && userCred.image} alt='sdf' />
