@@ -64,7 +64,7 @@ const StudentDeepAttendance = ({ match }) => {
       <div className='attendance-outer'>
         <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>
           Attendance for the date of{' '}
-          <span style={{ background: 'red' }}>
+          <span>
             {dateFormat(now, "mmmm dS, yyyy")}
           </span>{' '}
         </h1>
