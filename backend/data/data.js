@@ -9,19 +9,19 @@ const items = [
   {
     title: 'Students',
     takeme: '/students',
-    number: 2000,
+    number: 11,
     image: '/images/students.jpg',
   },
   {
     title: 'Teachers',
-    number: 200,
+    number: 2,
     takeme: '/teachers',
     image: '/images/teachers.jpg',
   },
   {
     title: 'Working Staffs',
     takeme: '/staffs',
-    number: 30,
+    number: 0,
     image: '/images/Non-teaching.jpeg',
   },
 ]
