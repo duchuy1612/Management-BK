@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcryptjs'
 const teacherSchema = mongoose.Schema(
   {
+    
     registered_by: {
       type: String,
       required: true,
@@ -43,6 +45,14 @@ const teacherSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
+    isTeacher: {
+      type: Boolean,
+      required: true,
+    },
     estimated_salary: {
       type: Number,
       required: false,
@@ -63,6 +73,9 @@ const teacherSchema = mongoose.Schema(
 //the below is required code for converting the schema to the model
 //as per the documentation of mongoose
 //any name can be given as a constant in the place of the Student
+teacherSchema.methods.matchPassword = async function (enteredPassword){
+  return await bcrypt.compare(enteredPassword, this.password)
+}
 const Teacher = mongoose.model('Teacher', teacherSchema)
 //Teacher variable is exported as follow is a ES module.
 export default Teacher

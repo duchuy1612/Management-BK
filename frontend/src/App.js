@@ -22,8 +22,8 @@ import NotFound from './screens/NotFound'
 
 import ExpenseScreen from './screens/ExpenseScreen'
 import underConstruction from './components/underConstruction'
-import { studentAttendances } from './actions/studentActions'
 import PrivateRoute from '../src/utils/PrivateRoute'
+import PublicRoute from '../src/utils/PublicRoute'
 // import ExpenseScreen from './screens/ExpenseScreen'
 
 const App = () => {
@@ -31,16 +31,16 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <PrivateRoute path='/' component={Landing} exact />
+          <PublicRoute path='/' component={Landing} exact />
           <Route path='/login' component={Login} exact />
           <PrivateRoute path='/student-register' component={StudentRegister} />
           <PrivateRoute path='/student-fee' component={StudentFees} />
-          <PrivateRoute
+          <PublicRoute
             path='/student_details'
             component={StudentDetails}
             exact
           />
-          <PrivateRoute
+          <PublicRoute
             path='/student_details/details/:id'
             component={StudentDeepDetails}
             exact
@@ -60,12 +60,12 @@ const App = () => {
             component={underConstruction}
             exact
           />
-          <PrivateRoute
+          <PublicRoute
             path='/student-attendance/:class'
             component={StudentDeepAttendance}
             exact
           />
-          <PrivateRoute path='/students' component={AllStudents} exact />
+          <PublicRoute path='/students' component={AllStudents} exact />
           <PrivateRoute
             path='/teacher_salary'
             component={TeacherSalary}
@@ -94,7 +94,7 @@ const App = () => {
           />
           <PrivateRoute path='/income' component={IncomeScreen} exact />
           <PrivateRoute path='/salary' component={ExpenseScreen} exact />
-          <PrivateRoute
+          <PublicRoute
             path='/student-attendance'
             component={StudentAttendance}
             exact

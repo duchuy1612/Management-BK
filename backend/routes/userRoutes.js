@@ -1,6 +1,7 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
 import Admin from '../models/adminModel.js'
+import Teacher from '../models/teacherModel.js'
 import generateToken from '../utils/generateToken.js'
 import protect from '../middleware/authMiddleware.js'
 
@@ -12,6 +13,8 @@ router.post(
     // const students = await Student.find({})
     const { email, password } = req.body
     const user = await Admin.findOne({ email })
+    const user_teacher = await Teacher.findOne({ email })
+    
     if (user && (await user.matchPassword(password))) {
       res.json({
         _id: user._id,
@@ -22,6 +25,19 @@ router.post(
         token: generateToken(user._id),
       })
     } else {
+      if (user_teacher && (await user_teacher.matchPassword(password))) {
+        res.json({
+          _id: user_teacher.teacherID,
+          name: user_teacher.teacher_name,
+          email: user_teacher.email,
+          isTeacher: user_teacher.isTeacher,
+          image: user_teacher.image,
+          token: generateToken(user_teacher._id),
+        })
+      } else {
+        res.status(401)
+        throw new Error('Invalid email or password')
+      }
       res.status(401)
       throw new Error('Invalid email or password')
     }
@@ -37,6 +53,7 @@ router.get(
   protect,
   asyncHandler(async (req, res) => {
     const user = await Admin.findById(req.user._id)
+    const user_teacher = await Teacher.findById(req.user._id)
     if (user) {
       res.json({
         _id: user._id,
@@ -46,7 +63,19 @@ router.get(
       })
     } else {
       res.status(404)
-      throw new Error('User not found')
+      throw new Error('Admin not found')
+    }
+
+    if (user_teacher) {
+      res.json({
+        _id: user_teacher.teacherID,
+        name: user_teacher.teacher_name,
+        email: user_teacher.email,
+        isTeacher: user_teacher.isTeacher,
+      })
+    } else {
+      res.status(404)
+      throw new Error('Teacher not found')
     }
   })
 )

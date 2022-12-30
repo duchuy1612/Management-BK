@@ -21,6 +21,7 @@ const importData = async () => {
     await Teacher.deleteMany()
     await Dashboard.deleteMany()
     const createdUsers = await Admin.insertMany(users)
+    
     console.log('inserted users')
     const adminUser = createdUsers[0]._id
 
