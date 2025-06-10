@@ -60,7 +60,7 @@ const exportData = async () => {
 }
 
 if (process.argv[2] === '-d') {
-  destroyData()
+  exportData()
 } else {
   importData()
 }
