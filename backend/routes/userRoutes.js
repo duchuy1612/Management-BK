@@ -16,7 +16,7 @@ router.post(
     const user_teacher = await Teacher.findOne({ email })
     
     if (user && (await user.matchPassword(password))) {
-      res.json({
+      return res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
@@ -24,23 +24,21 @@ router.post(
         image: user.image,
         token: generateToken(user._id),
       })
-    } else {
-      if (user_teacher && (await user_teacher.matchPassword(password))) {
-        res.json({
-          _id: user_teacher.teacherID,
-          name: user_teacher.teacher_name,
-          email: user_teacher.email,
-          isTeacher: user_teacher.isTeacher,
-          image: user_teacher.image,
-          token: generateToken(user_teacher._id),
-        })
-      } else {
-        res.status(401)
-        throw new Error('Invalid email or password')
-      }
-      res.status(401)
-      throw new Error('Invalid email or password')
     }
+
+    if (user_teacher && (await user_teacher.matchPassword(password))) {
+      return res.json({
+        _id: user_teacher.teacherId,
+        name: user_teacher.teacher_name,
+        email: user_teacher.email,
+        isTeacher: user_teacher.isTeacher,
+        image: user_teacher.image,
+        token: generateToken(user_teacher._id),
+      })
+    }
+
+    res.status(401)
+    throw new Error('Invalid email or password')
   })
 )
 
@@ -55,28 +53,25 @@ router.get(
     const user = await Admin.findById(req.user._id)
     const user_teacher = await Teacher.findById(req.user._id)
     if (user) {
-      res.json({
+      return res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
       })
-    } else {
-      res.status(404)
-      throw new Error('Admin not found')
     }
 
     if (user_teacher) {
-      res.json({
-        _id: user_teacher.teacherID,
+      return res.json({
+        _id: user_teacher.teacherId,
         name: user_teacher.teacher_name,
         email: user_teacher.email,
         isTeacher: user_teacher.isTeacher,
       })
-    } else {
-      res.status(404)
-      throw new Error('Teacher not found')
     }
+
+    res.status(404)
+    throw new Error('User not found')
   })
 )
 
