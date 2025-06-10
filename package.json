@@ -9,6 +9,7 @@
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "jest --experimental-vm-modules",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "jest": "^29.7.0"
   }
 }
