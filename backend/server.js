@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'production') {
 //the following router is for displaying the class labels
 
 //following route is for displaying the list of students
-//according to the classses
+//according to the classes
 
 //following route will only be used in case the error is encountered.
 //FOLLOWING IS THE FALL BACK ROUTE for url not listed in the backend folder
